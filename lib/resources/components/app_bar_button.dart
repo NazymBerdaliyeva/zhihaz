@@ -10,34 +10,36 @@ class CustomAppBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(top:3,left: 16),
-          child: Container(
-            width: 72,
-            height: 48,
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(41, 41, 41, 0.1),
-                  offset: Offset(0,0),
-                  blurRadius: 5.0,
-                  spreadRadius: 2,
+        GestureDetector(
+          onTap: () {
+            print('clicked');
+          },
+          child: Padding(
+            padding: EdgeInsets.only(top:3,left: 16),
+            child: Container(
+              width: 72,
+              height: 48,
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromRGBO(41, 41, 41, 0.1),
+                    offset: Offset(0,0),
+                    blurRadius: 5.0,
+                    spreadRadius: 2,
+                  ),
+                ],
+                borderRadius: BorderRadius.horizontal(
+                  left: new Radius.circular(30),
                 ),
-              ],
-              borderRadius: BorderRadius.horizontal(
-                left: new Radius.circular(30),
               ),
-            ),
-            child: GestureDetector(
-              onTap: () {},
               child: Stack(
                 children: <Widget>[
                   Positioned(
                     top: 12,
                     left: 23,
                     child: new SvgPicture.asset(
-                      'assets/images/shopping-bag.svg',
+                      "assets/images/shopping-bag.svg",
                       width: 24,
                       height: 24,
                     ),
@@ -57,6 +59,7 @@ class CustomAppBarButton extends StatelessWidget {
                           child: new Center(
                             child: new Text(
                               counter.toString(),
+                              textAlign: TextAlign.center,
                               style: new TextStyle(
                                   color: Colors.white,
                                   fontSize: 10.0,

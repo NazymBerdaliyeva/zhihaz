@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/rendering.dart';
 import 'package:zhihaz/resources/components/app_bar_button.dart';
+import 'resources/components/furniture_category.dart';
+import 'resources/components/primary_button.dart';
+import 'views/furniture/furniture_main.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: MyHomePage(title: 'Zhihaz',),
+      home: MyHomePage(
+        title: 'Zhihaz',
+      ),
     );
   }
 }
@@ -47,30 +52,25 @@ class _MyHomePageState extends State<MyHomePage> {
           widget.title,
           style: TextStyle(
               fontFamily: 'Noto Sans',
-               fontSize: 32,
-            fontWeight: FontWeight.w700
-          ),
+              fontSize: 32,
+              fontWeight: FontWeight.w700),
         ),
         actions: <Widget>[
           CustomAppBarButton(_counter),
         ],
       ),
 
-      body: Container(
-        margin: EdgeInsets.symmetric(vertical: 20.0),
-        height: 40,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-
-          children: <Widget>[
-            Text('All'),
-            Text('Sofa'),
-            Text('Table'),
-            Text('Bed'),
-            Text('Chair'),
-            Text('Cabinets')
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20.0),
+            height: 40,
+            child: FurnitureCategory(),
+          ),
+          SizedBox(height: 10,),
+          FurnitureMain(),
+          PrimaryButton(),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
